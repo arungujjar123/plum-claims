@@ -1,0 +1,144 @@
+/* ── Google Font ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+/* ── Tailwind v4 Theme ── */
+@theme {
+  --color-plum-50: #faf5ff;
+  --color-plum-100: #f3e8ff;
+  --color-plum-200: #e9d5ff;
+  --color-plum-300: #d8b4fe;
+  --color-plum-400: #c084fc;
+  --color-plum-500: #a855f7;
+  --color-plum-600: #9333ea;
+  --color-plum-700: #7e22ce;
+  --color-plum-800: #6b21a8;
+  --color-plum-900: #581c87;
+  --color-plum-950: #3b0764;
+
+  --color-surface: #0f0a1a;
+  --color-surface-card: #1a1128;
+  --color-surface-elevated: #241a36;
+  --color-surface-hover: #2e2244;
+
+  --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Base Styles ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-surface);
+  color: #e2ddf5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-plum-800);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-plum-600);
+}
+
+/* ── Utility Animations ── */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.4); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-card) 0%,
+    var(--color-surface-elevated) 50%,
+    var(--color-surface-card) 100%
+  );
+  background-size: 2000px 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+/* ── Glass morphism card ── */
+.glass-card {
+  background: rgba(26, 17, 40, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(168, 85, 247, 0.1);
+  border-radius: 16px;
+}
+
+/* ── Status badges ── */
+.badge-approved {
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.badge-rejected {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.badge-partial {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.badge-manual-review {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
